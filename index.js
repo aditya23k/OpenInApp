@@ -82,7 +82,7 @@ app.get('/auth/google', async (res,req) => {
                                         userId: 'me',
                                         id: unreadEmails[unreadEmail].id,
                                         });
-                                        const email = messageData.data;
+                                        const email = msgData.data;
                                         const headers = msgData.data.payload.headers.some(
                                                 (header) => header.name === "In-Reply-To"
                                         );
@@ -105,9 +105,10 @@ app.get('/auth/google', async (res,req) => {
                                                         ).toString("base64"),
                                                         },
                                                 }; 
+                                                //send the reply message
+                                                 await gmail.users.messages.send(replyMsg);
                                         }
-                                   //send the reply message
-                                   await gmail.users.messages.send(replyMsg);
+                                   
                                    //move the email to the label created
                                    await gmail.users.messages.modify({
                                         userId: 'me',
