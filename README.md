@@ -1,4 +1,4 @@
-# OpenInApp
+# VacationEmailer
 
 Prerequisites:
 Gmail API credentials JSON file
